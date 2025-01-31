@@ -67,6 +67,19 @@ public class RegistrationUserCreationWithDomainBlock extends RegistrationUserCre
          }
       }
 
-      return true;
+      var emailTLD = email.substring(email.lastIndexOf("."));
+      var goodTLDs = new String[]{
+              ".us", ".ca", ".uk", ".de", ".fr", ".it", ".es",
+              ".se", ".nl", ".pl", ".ch", ".au", ".kr", ".jp",
+              ".com", ".org", ".net", ".edu", ".gov", ".tv",
+              ".info", ".biz", ".io", ".me", ".academy", ".ai",
+              ".app", ".art", ".bank", ".blog", ".cloud", ".club",
+              ".co", ".crypto", ".dao", ".dev", ".digital", ".email",
+              ".finance", ".game", ".games", ".health", ".host", ".live",
+              ".media", ".music", ".news", ".online", ".shop", ".site",
+              ".space", ".store", ".tech", ".technology", ".video", ".web",
+              ".wiki", ".xyz", ".zone"
+      };
+      return Arrays.asList(goodTLDs).contains(emailTLD);
    }
 }
